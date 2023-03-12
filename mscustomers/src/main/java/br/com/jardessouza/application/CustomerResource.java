@@ -1,7 +1,7 @@
-package br.com.jardessouza.eurekaserver.application;
+package br.com.jardessouza.application;
 
-import br.com.jardessouza.eurekaserver.application.representation.CustomerSaveRequest;
-import br.com.jardessouza.eurekaserver.service.CustomerService;
+import br.com.jardessouza.application.representation.CustomerSaveRequest;
+import br.com.jardessouza.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

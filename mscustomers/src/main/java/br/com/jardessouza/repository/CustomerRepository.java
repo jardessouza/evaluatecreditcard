@@ -1,6 +1,6 @@
-package br.com.jardessouza.eurekaserver.infra.repository;
+package br.com.jardessouza.repository;
 
-import br.com.jardessouza.eurekaserver.domain.Customer;
+import br.com.jardessouza.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

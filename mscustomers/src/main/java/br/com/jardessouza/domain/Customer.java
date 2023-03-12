@@ -1,10 +1,12 @@
-package br.com.jardessouza.eurekaserver.domain;
+package br.com.jardessouza.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 @Data
