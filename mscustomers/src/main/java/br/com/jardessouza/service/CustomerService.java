@@ -1,7 +1,7 @@
-package br.com.jardessouza.eurekaserver.service;
+package br.com.jardessouza.service;
 
-import br.com.jardessouza.eurekaserver.domain.Customer;
-import br.com.jardessouza.eurekaserver.infra.repository.CustomerRepository;
+import br.com.jardessouza.domain.Customer;
+import br.com.jardessouza.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

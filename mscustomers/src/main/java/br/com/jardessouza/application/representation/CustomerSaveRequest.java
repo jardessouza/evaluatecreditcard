@@ -1,6 +1,6 @@
-package br.com.jardessouza.eurekaserver.application.representation;
+package br.com.jardessouza.application.representation;
 
-import br.com.jardessouza.eurekaserver.domain.Customer;
+import br.com.jardessouza.domain.Customer;
 import lombok.Data;
 
 @Data
