@@ -22,7 +22,8 @@
 	<modules>
 		<module>eurekaserver</module>
 		<module>mscustomers</module>
-		<module>mscloudgateway</module>
+		<module>msgateway</module>
+		<module>mscards</module>
 	</modules>
 
 	<dependencies>
