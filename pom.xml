@@ -24,6 +24,7 @@
 		<module>mscustomers</module>
 		<module>msgateway</module>
 		<module>mscards</module>
+		<module>msevaluatecreditcard</module>
 	</modules>
 
 	<dependencies>
