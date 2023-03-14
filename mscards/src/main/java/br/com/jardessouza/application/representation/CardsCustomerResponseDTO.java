@@ -1,13 +1,10 @@
 package br.com.jardessouza.application.representation;
 
-import br.com.jardessouza.domain.Card;
 import br.com.jardessouza.domain.CardCustomer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 @Data
@@ -22,7 +19,7 @@ public class CardsCustomerResponseDTO {
         return new CardsCustomerResponseDTO(
                 model.getCard().getName(),
                 model.getCard().getFlag().toString(),
-                model.getLimit()
+                model.getLimitReleased()
         );
     }
 }
