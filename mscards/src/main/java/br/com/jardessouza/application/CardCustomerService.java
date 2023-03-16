@@ -1,7 +1,7 @@
 package br.com.jardessouza.application;
 
 import br.com.jardessouza.domain.CardCustomer;
-import br.com.jardessouza.repository.CardCustomerRepository;
+import br.com.jardessouza.infra.repository.CardCustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

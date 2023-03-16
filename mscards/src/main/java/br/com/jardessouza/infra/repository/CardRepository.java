@@ -1,4 +1,4 @@
-package br.com.jardessouza.repository;
+package br.com.jardessouza.infra.repository;
 
 import br.com.jardessouza.domain.Card;
 import org.springframework.data.jpa.repository.JpaRepository;

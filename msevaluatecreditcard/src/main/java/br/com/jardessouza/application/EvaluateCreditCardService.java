@@ -2,9 +2,11 @@ package br.com.jardessouza.application;
 
 import br.com.jardessouza.application.ex.CustomerDataNotFoundException;
 import br.com.jardessouza.application.ex.ErrorCommunicationMicroservicesException;
+import br.com.jardessouza.application.ex.ErrorRequestCardIssueException;
 import br.com.jardessouza.domain.*;
 import br.com.jardessouza.infra.client.CardsResourceClient;
 import br.com.jardessouza.infra.client.CustomerResourceClient;
+import br.com.jardessouza.infra.mqueue.RequestIssuingCardPublisher;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,6 +24,7 @@ public class EvaluateCreditCardService {
 
     private final CustomerResourceClient customerResourceClient;
     private final CardsResourceClient cardsResourceClient;
+    private final RequestIssuingCardPublisher requestIssuingCardPublisher;
 
     public CustomerSituation getCustomerSituation(String cpf) throws CustomerDataNotFoundException, ErrorCommunicationMicroservicesException {
         try {
@@ -74,6 +78,16 @@ public class EvaluateCreditCardService {
                 throw new CustomerDataNotFoundException();
             }
             throw new ErrorCommunicationMicroservicesException(e.getMessage(), status);
+        }
+    }
+
+    public CardRequestProtocol requestCardIssue(CardIssueRequestData data){
+        try{
+            this.requestIssuingCardPublisher.requestCard(data);
+            var protocol = UUID.randomUUID().toString();
+            return new CardRequestProtocol(protocol);
+        }catch (Exception e){
+            throw new ErrorRequestCardIssueException(e.getMessage());
         }
     }
 }
