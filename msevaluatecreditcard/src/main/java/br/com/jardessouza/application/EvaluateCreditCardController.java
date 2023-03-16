@@ -2,6 +2,9 @@ package br.com.jardessouza.application;
 
 import br.com.jardessouza.application.ex.CustomerDataNotFoundException;
 import br.com.jardessouza.application.ex.ErrorCommunicationMicroservicesException;
+import br.com.jardessouza.application.ex.ErrorRequestCardIssueException;
+import br.com.jardessouza.domain.CardIssueRequestData;
+import br.com.jardessouza.domain.CardRequestProtocol;
 import br.com.jardessouza.domain.CustomerSituation;
 import br.com.jardessouza.domain.EvaluationData;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +43,15 @@ public class EvaluateCreditCardController {
             return ResponseEntity.notFound().build();
         } catch (ErrorCommunicationMicroservicesException e) {
             return ResponseEntity.status(HttpStatus.resolve(e.getStatus())).body(e.getMessage());
+        }
+    }
+    @PostMapping("request-card")
+    public ResponseEntity requestCard(@RequestBody CardIssueRequestData data){
+        try {
+            CardRequestProtocol cardRequestProtocol = this.evaluateCreditCardService.requestCardIssue(data);
+            return ResponseEntity.ok(cardRequestProtocol);
+        } catch (ErrorRequestCardIssueException e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
